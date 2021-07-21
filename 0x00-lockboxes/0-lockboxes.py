@@ -17,7 +17,7 @@ def canUnlockAll(boxes):
             for key in boxes[keys[idx]]:
                 if key not in keys:
                     keys.append(key)
-            boxes[keys[idx]] is None
+            boxes[keys[idx]] = None
         idx += 1
     if (all(box is None for box in boxes)):
         return True
