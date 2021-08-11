@@ -5,6 +5,7 @@ Function that gets min num of ops
 
 import sys
 
+
 def minOperations(n):
     """gets min operations"""
 
@@ -14,7 +15,7 @@ def minOperations(n):
 
 def minOpHelper(target, current, clipboard, operations):
     """uses recursion to calculate min ops"""
-    
+
     copy = sys.maxsize
     paste = sys.maxsize
 
