@@ -19,7 +19,7 @@ def minOpHelper(target, current, clipboard, operations):
     copy = sys.maxsize
     paste = sys.maxsize
 
-    if (target < 1):
+    if (target < 1 or isinstance(target, int)):
         return 0
     if (target == current):
         return operations
