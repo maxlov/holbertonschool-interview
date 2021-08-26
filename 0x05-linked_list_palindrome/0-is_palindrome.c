@@ -22,7 +22,8 @@ int is_palindrome(listint_t **head)
 	{
 		if (fast == NULL)
 		{
-			if (storage[--index] != slow->n)
+			index--;
+			if (storage[index] != slow->n)
 				return (0);
 		}
 		else if (fast->next == NULL)
@@ -33,7 +34,8 @@ int is_palindrome(listint_t **head)
 		}
 		else
 		{
-			storage[index++] = slow->n;
+			storage[index] = slow->n;
+			index++;
 			fast = fast->next->next;
 		}
 		slow = slow->next;
