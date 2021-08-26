@@ -9,7 +9,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int storage[500];
+	int storage[1000];
 	int index = 0;
 	listint_t *slow;
 	listint_t *fast;
