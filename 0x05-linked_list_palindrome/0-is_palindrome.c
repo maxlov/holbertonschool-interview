@@ -16,12 +16,12 @@ int is_palindrome(listint_t **head)
 	fast = *head;
 
 	int storage[1024];
-	int index = 0;	
+	int index = 0;
 
 	while (slow != NULL)
 	{
 		if (fast == NULL)
-		{			
+		{
 			if (storage[--index] != slow->n)
 				return (0);
 		}
