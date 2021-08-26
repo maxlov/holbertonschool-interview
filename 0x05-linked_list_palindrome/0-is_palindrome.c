@@ -9,7 +9,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int storage[500];
+	int storage[512];
 	int index = 0;
 	listint_t *slow;
 	listint_t *fast;
@@ -18,26 +18,23 @@ int is_palindrome(listint_t **head)
 	fast = *head;
 
 	if (slow == NULL || slow->next == NULL)
-	       return (1);	
+		return (1);
 
 	while (slow != NULL)
 	{
 		if (fast == NULL)
 		{
-			index--;
-			if (storage[index] != slow->n)
+			if (storage[index--] != slow->n)
 				return (0);
 		}
 		else if (fast->next == NULL)
 		{
-			slow = slow->next;
 			fast = fast->next;
 			index--;
 		}
 		else
 		{
-			storage[index] = slow->n;
-			index++;
+			storage[index++] = slow->n;
 			fast = fast->next->next;
 		}
 		slow = slow->next;
