@@ -9,13 +9,16 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int storage[1000];
+	int storage[500];
 	int index = 0;
 	listint_t *slow;
 	listint_t *fast;
 
 	slow = *head;
 	fast = *head;
+
+	if (slow == NULL or slow->next == NULL)
+	       return (1);	
 
 	while (slow != NULL)
 	{
