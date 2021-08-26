@@ -18,7 +18,7 @@ int is_palindrome(listint_t **head)
 	int *storage;
 	int index = 0;
 
-	storage = malloc(sizeof(int) * 500);
+	storage = malloc(sizeof(int) * 10);
 
 	while (slow != NULL)
 	{
