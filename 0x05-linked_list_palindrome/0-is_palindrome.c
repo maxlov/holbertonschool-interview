@@ -15,8 +15,10 @@ int is_palindrome(listint_t **head)
 	slow = *head;
 	fast = *head;
 
-	int storage[500];
+	int *storage;
 	int index = 0;
+
+	storage = malloc(sizeof(int) * 500);
 
 	while (slow != NULL)
 	{
@@ -40,5 +42,6 @@ int is_palindrome(listint_t **head)
 		}
 		slow = slow->next;
 	}
+	free(storage);
 	return (1);
 }
