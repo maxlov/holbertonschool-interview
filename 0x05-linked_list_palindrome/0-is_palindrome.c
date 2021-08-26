@@ -15,7 +15,7 @@ int is_palindrome(listint_t **head)
 	slow = *head;
 	fast = *head;
 
-	int storage[1024];
+	int storage[500];
 	int index = 0;
 
 	while (slow != NULL)
