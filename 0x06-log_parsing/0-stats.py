@@ -4,15 +4,7 @@
 import sys
 
 
-
-def stats_print(stats):
-    print("File size: {}".format(stats["total"]))
-    keys = ['200', '301', '400', '401', '403', '404', '405', '500']
-    for key in keys:
-        if stats[key] < 1:
-            continue
-        print("{}: {}".format(key, stats[key]))
-
+keys = ['200', '301', '400', '401', '403', '404', '405', '500']
 
 stats = {
     'total': 0,
@@ -36,5 +28,14 @@ try:
         stats[input[7]] += 1
         if stats["total"] % 10 == 0 and stats["total"] != 0:
             stats_print(stats)
+        print("File size: {}".format(stats["total"]))
+        for key in keys:
+            if stats[key] < 1:
+                continue
+            print("{}: {}".format(key, stats[key]))
 except Exception:
-    stats_print(stats)
+    print("File size: {}".format(stats["total"]))
+    for key in keys:
+        if stats[key] < 1:
+            continue
+        print("{}: {}".format(key, stats[key]))
