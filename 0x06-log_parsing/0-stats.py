@@ -5,9 +5,11 @@ import sys
 from signal import signal, SIGINT
 from collections import OrderedDict
 
+
 def handler(signal_received, frame):
     stats_print(stats)
     exit(0)
+
 
 def stats_print(stats):
     print("File size {}".format(stats["total"]))
@@ -16,17 +18,18 @@ def stats_print(stats):
             continue
         print("{}: {}".format(key, value))
 
+
 if __name__ == '__main__':
     stats = {
-        'total' : 0,
-        '200' : 0,
-        '301' : 0,
-        '400' : 0,
-        '401' : 0,
-        '403' : 0,
-        '404' : 0,
-        '405' : 0,
-        '500' : 0
+        'total': 0,
+        '200': 0,
+        '301': 0,
+        '400': 0,
+        '401': 0,
+        '403': 0,
+        '404': 0,
+        '405': 0,
+        '500': 0
     }
 
     signal(SIGINT, handler)
