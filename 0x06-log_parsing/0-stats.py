@@ -35,7 +35,7 @@ try:
             stats[input[7]] += 1
         except Exception:
             continue
-        if line_count % 10 == 0 and line_count != 0:
+        if line_count % 10 == 0 and line_count > 0:
             stats_print(stats)
 except Exception:
     pass
