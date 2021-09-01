@@ -4,7 +4,6 @@
 import sys
 
 
-
 def stats_print(stats):
     print("File size: {}".format(stats["total"]))
     keys = ['200', '301', '400', '401', '403', '404', '405', '500']
@@ -30,12 +29,15 @@ line_count = 0
 try:
     for line in sys.stdin:
         input = line.split()
-        line_count += 1
-        if len(input) != 9:
+        try:
+            line_count += 1
+            stats["total"] += int(input[-1])
+            stats[input[7]] += 1
+        except Exception:
             continue
-        stats["total"] += int(input[-1])
-        stats[input[7]] += 1
         if line_count % 10 == 0 and line_count != 0:
             stats_print(stats)
 except Exception:
+    pass
+finally:
     stats_print(stats)
