@@ -2,21 +2,16 @@
 '''coding challenge function'''
 
 import sys
-from signal import signal, SIGINT
-from collections import OrderedDict
 
-
-def handler(signal_received, frame):
-    stats_print(stats)
-    exit(0)
 
 
 def stats_print(stats):
     print("File size: {}".format(stats["total"]))
-    for key, value in stats.items():
-        if (key == 'total' or value < 1):
+    keys = ['200', '301', '400', '401', '403', '404', '405', '500']
+    for key in keys:
+        if stats[key] < 1:
             continue
-        print("{}: {}".format(key, value))
+        print("{}: {}".format(key, stats[key]))
 
 
 stats = {
@@ -31,14 +26,15 @@ stats = {
     '500': 0
 }
 
-signal(SIGINT, handler)
+try:
+    for line in sys.stdin:
+        input = line.split()
 
-for line in sys.stdin:
-    input = line.split()
-
-    if len(input) != 9:
-        continue
-    stats["total"] += 1
-    stats[input[7]] += 1
-    if stats["total"] % 10 == 0 and stats["total"] != 0:
-        stats_print(stats)
+        if len(input) != 9:
+            continue
+        stats["total"] += 1
+        stats[input[7]] += 1
+        if stats["total"] % 10 == 0 and stats["total"] != 0:
+            stats_print(stats)
+except Exception:
+    stats_print(stats)
