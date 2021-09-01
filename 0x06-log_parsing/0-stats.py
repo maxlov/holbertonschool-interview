@@ -19,27 +19,27 @@ def stats_print(stats):
         print("{}: {}".format(key, value))
 
 
-if __name__ == '__main__':
-    stats = {
-        'total': 0,
-        '200': 0,
-        '301': 0,
-        '400': 0,
-        '401': 0,
-        '403': 0,
-        '404': 0,
-        '405': 0,
-        '500': 0
-    }
 
-    signal(SIGINT, handler)
+stats = {
+    'total': 0,
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
 
-    for line in sys.stdin:
-        input = line.split()
+signal(SIGINT, handler)
 
-        if len(input) != 9:
-            continue
-        stats["total"] += 1
-        stats[input[7]] += 1
-        if stats["total"] % 10 == 0 and stats["total"] != 0:
-            stats_print(stats)
+for line in sys.stdin:
+    input = line.split()
+
+    if len(input) != 9:
+        continue
+    stats["total"] += 1
+    stats[input[7]] += 1
+    if stats["total"] % 10 == 0 and stats["total"] != 0:
+        stats_print(stats)
