@@ -4,7 +4,15 @@
 import sys
 
 
-keys = ['200', '301', '400', '401', '403', '404', '405', '500']
+
+def stats_print(stats):
+    print("File size: {}".format(stats["total"]))
+    keys = ['200', '301', '400', '401', '403', '404', '405', '500']
+    for key in keys:
+        if stats[key] < 1:
+            continue
+        print("{}: {}".format(key, stats[key]))
+
 
 stats = {
     'total': 0,
@@ -17,25 +25,17 @@ stats = {
     '405': 0,
     '500': 0
 }
+line_count = 0
 
 try:
     for line in sys.stdin:
         input = line.split()
-
+        line_count += 1
         if len(input) != 9:
             continue
-        stats["total"] += 1
+        stats["total"] += int(input[-1])
         stats[input[7]] += 1
-        if stats["total"] % 10 == 0 and stats["total"] != 0:
+        if line_count % 10 == 0 and line_count != 0:
             stats_print(stats)
-        print("File size: {}".format(stats["total"]))
-        for key in keys:
-            if stats[key] < 1:
-                continue
-            print("{}: {}".format(key, stats[key]))
 except Exception:
-    print("File size: {}".format(stats["total"]))
-    for key in keys:
-        if stats[key] < 1:
-            continue
-        print("{}: {}".format(key, stats[key]))
+    stats_print(stats)
