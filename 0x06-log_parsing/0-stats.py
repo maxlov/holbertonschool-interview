@@ -12,12 +12,11 @@ def handler(signal_received, frame):
 
 
 def stats_print(stats):
-    print("File size {}".format(stats["total"]))
+    print("File size: {}".format(stats["total"]))
     for key, value in stats.items():
         if (key == 'total' or value < 1):
             continue
         print("{}: {}".format(key, value))
-
 
 
 stats = {
