@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "search_algos.h"
-#include <unistd.h>
 
 /**
  * binary_helper - searches array with binary search algo
@@ -30,7 +29,6 @@ int binary_helper(int *array, size_t l, size_t r, int value)
 
 	m = (l + r) / 2;
 
-	sleep(1);
 	if (array[m] == value && (r - l <= 1 || r == 0))
 		return (m);
 	if (array[m] >= value)
