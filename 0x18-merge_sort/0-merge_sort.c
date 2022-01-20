@@ -38,8 +38,8 @@ void merge_halves(int *array, int l, int m, int r)
 	int sub_left_size = m - l + 1;
 	int sub_right_size = r - m;
 
-	int left_temp[50];
-	int right_temp[50];
+	int left_temp[500];
+	int right_temp[500];
 
 	for (i_left = 0; i_left < sub_left_size; i_left++)
 		left_temp[i_left] = array[l + i_left];
