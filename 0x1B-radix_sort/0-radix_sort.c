@@ -28,7 +28,7 @@ void radix_sort(int *array, size_t size)
 	for (; maximum / place > 0; place *= 10)
 	{
 		sort_step = malloc(sizeof(int) * size);
-		for (i = 0; i < (int)size; i++)
+		for (i = 0; i < 10; i++)
 			digit_count[i] = 0;
 		for (i = 0; i < (int)size; i++)
 			digit_count[(array[i] / place) % 10]++;
